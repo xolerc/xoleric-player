@@ -1,0 +1,50 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.xoleric.app'
+    compileSdk 34
+
+    signingConfigs {
+        release {
+            // release uchun oddiy self-signed keystore (release build uchun)
+            storeFile file('xoleric.keystore')
+            storePassword 'xoleric2026'
+            keyAlias 'xoleric'
+            keyPassword 'xoleric2026'
+        }
+    }
+
+    defaultConfig {
+        applicationId 'com.xoleric.app'
+        minSdk 24
+        targetSdk 34
+        versionCode 2
+        versionName '2.0'
+        vectorDrawables.useSupportLibrary true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            debuggable false
+            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+}
+
+// Nol external dependency — faqat Android framework. Offline build xavfsiz.
+dependencies {
+}

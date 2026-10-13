@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Xoleric" parent="@android:style/Theme.Material.NoActionBar.Fullscreen">
+        <item name="android:windowBackground">#05070C</item>
+        <item name="android:statusBarColor">#05070C</item>
+        <item name="android:navigationBarColor">#05070C</item>
+    </style>
+    <style name="Theme.Xoleric.Splash" parent="Theme.Xoleric">
+        <item name="android:windowBackground">#05070C</item>
+    </style>
+</resources>

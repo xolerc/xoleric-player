@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 4K tiniq rang tizimi — chuqur qora, po'lat-ko'k, oq chaqnoq.
+     Hech qanday xira/blurred rang yo'q: aniq, yuqori kontrast. -->
+<resources>
+    <!-- Fon -->
+    <color name="bg_deep">#05070C</color>
+    <color name="bg_panel">#0A0F18</color>
+    <color name="bg_elevated">#111921</color>
+
+    <!-- Matn -->
+    <color name="bone">#ECEFF4</color>
+    <color name="text_primary">#E8ECF4</color>
+    <color name="text_secondary">#B6BECB</color>
+    <color name="muted">#AAB6C9</color>
+
+    <!-- Po'lat aksent (mydrime Chrome) -->
+    <color name="steel">#8EA0B8</color>
+    <color name="steel_bright">#B8C6DA</color>
+    <color name="white">#FFFFFF</color>
+
+    <!-- Accent — aniq, tiniq -->
+    <color name="accent">#111921</color>
+    <color name="accent_glow">#243447</color>
+
+    <!-- Holat -->
+    <color name="live_green">#3FB950</color>
+    <color name="pure_black">#000000</color>
+
+    <!-- Animatsiya_gradient_uchun aniq ARGB cho'qqilari -->
+    <color name="grad_top">#0A0F18</color>
+    <color name="grad_mid">#111921</color>
+    <color name="grad_edge">#05070C</color>
+</resources>
