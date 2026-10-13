@@ -1,9 +1,11 @@
 package com.xoleric.player;
 
+import android.content.Context;
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import java.util.List;
 
@@ -25,6 +27,7 @@ public class PlayerController implements MediaPlayer.OnPreparedListener,
 
     private final MediaPlayer mp = new MediaPlayer();
     private final List<Song> queue;
+    private final Context appCtx;
     private Callback cb;
     private int index = -1;
     private boolean prepared = false;
@@ -42,7 +45,8 @@ public class PlayerController implements MediaPlayer.OnPreparedListener,
         }
     };
 
-    public PlayerController(List<Song> queue) {
+    public PlayerController(Context context, List<Song> queue) {
+        this.appCtx = context.getApplicationContext();
         this.queue = queue;
         mp.setAudioAttributes(new AudioAttributes.Builder()
                 .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
@@ -67,9 +71,11 @@ public class PlayerController implements MediaPlayer.OnPreparedListener,
         playing = false;
         try {
             mp.reset();
-            mp.setDataSource(s.uri.toString());
+            mp.setDataSource(appCtx, s.uri);
+            Log.d("XolericPlayer", "prepareAsync: " + s.uri);
             mp.prepareAsync();
         } catch (Exception e) {
+            Log.e("XolericPlayer", "playAt fail", e);
             if (cb != null) cb.onError("Ovoz ochilmadi: " + e.getMessage());
         }
     }
@@ -104,6 +110,7 @@ public class PlayerController implements MediaPlayer.OnPreparedListener,
     }
 
     @Override public void onPrepared(MediaPlayer m) {
+        Log.d("XolericPlayer", "onPrepared dur=" + m.getDuration());
         prepared = true;
         playing = true;
         m.start();
@@ -121,6 +128,7 @@ public class PlayerController implements MediaPlayer.OnPreparedListener,
     }
 
     @Override public boolean onError(MediaPlayer m, int what, int extra) {
+        Log.e("XolericPlayer", "onError what=" + what + " extra=" + extra);
         prepared = false; playing = false;
         if (cb != null) cb.onError("Player xatosi: " + what + "/" + extra);
         return true;

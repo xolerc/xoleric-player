@@ -161,7 +161,7 @@ public class MainActivity extends Activity implements PlayerController.Callback 
                     Toast.makeText(this, "Turli xil musiqa topilmadi",
                             Toast.LENGTH_LONG).show();
                 }
-                player = new PlayerController(songs);
+                player = new PlayerController(this, songs);
                 player.setCallback(this);
                 adapter = new SongAdapter(this, songs);
                 songList.setAdapter(adapter);

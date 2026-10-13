@@ -116,7 +116,8 @@ public class LoaderView extends View implements Choreographer.FrameCallback {
             for (int k = 0; k < len; k++) c.glyphs[k] = GLYPHS.charAt(rnd.nextInt(GLYPHS.length()));
             c.speed = 140f + rnd.nextInt(320);      // px/s
             c.drift = (rnd.nextFloat() - 0.5f) * 26f; // shamol gorizontal silkinish
-            c.y = -rnd.nextInt((int) (h));           // boshlang'ich tarqatish
+            int spread = Math.max(1, (int) h);
+            c.y = -rnd.nextInt(spread);              // boshlang'ich tarqatish
             cols[i] = c;
         }
     }
@@ -144,7 +145,7 @@ public class LoaderView extends View implements Choreographer.FrameCallback {
                 // (chegarada ushlab turish onDraw da)
                 // zanjir pastdan chiqib ketdi → tepadan qaytish
                 if (top > h) {
-                    c.y = -rnd.nextInt((int) (h / 2)) - c.len;
+                    c.y = -rnd.nextInt(Math.max(1, (int) (h / 2))) - c.len;
                     c.speed = 140f + rnd.nextInt(320);
                     // belgilarni yangilash
                     for (int k = 0; k < c.glyphs.length; k++)
